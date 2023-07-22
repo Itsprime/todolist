@@ -7,25 +7,20 @@ const submit = document.getElementById('submit-button');
 //get the element which youre going to put the div in LIST
 //create the Element which is a p (how to create multiple p when someone click )
 //inside the created p appendChild
+let add_id = 0;
 
 submit.addEventListener('click', e => {
     e.preventDefault()
-    createTODO()
-    // const text_value = document.getElementById("test123").value;
-    // const text1 = document.createTextNode(text_value);
-    // create2do.append(text1)
-    // LIST.appendChild(createTODO);
+    createTODO(add_id)
+    add_id++;
 });
 
-function createTODO(){
-    // const text_value = document.getElementById("test123").value;
-    const text1 = document.createTextNode(document.getElementById("test123").value);
+function createTODO(amount) {
+    const input_text = document.createTextNode(document.getElementById("test123").value);
     var createDiv = document.createElement("div");
-    createDiv.append(text1)
+    createDiv.append(input_text)
+    createDiv.setAttribute(`id`, `${add_id}`)
     LIST.appendChild(createDiv)
 }
 
-
-//make a new function when someone click submit
-//creates new div with the text_value + other shit
-//
+// Create a button or 
