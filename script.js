@@ -1,12 +1,5 @@
 const LIST = document.getElementById("todolist");
-// const text_value = document.getElementById("test123").value;
-// const text1 = document.createTextNode(text_value);
-const create2do = document.createElement("div");
 const submit = document.getElementById('submit-button');
-
-//get the element which youre going to put the div in LIST
-//create the Element which is a p (how to create multiple p when someone click )
-//inside the created p appendChild
 let add_id = 0;
 
 submit.addEventListener('click', e => {
@@ -15,19 +8,36 @@ submit.addEventListener('click', e => {
     add_id++;
 });
 
-
 //create a div that is inside the div(input_text) and button ? and display: grid on css
 //create an eventlistener, when click on delete button, delete whole div. 
 function createTODO(amount) {
-    const input_text = document.createTextNode(document.getElementById("test123").value);
+    //create div containing div and delete button with class=for css and id${amount} to delete
+    var createWrapperDiv = document.createElement("div");
+    LIST.appendChild(createWrapperDiv)
+    createWrapperDiv.setAttribute(`id`, `${amount}`)
+    createWrapperDiv.setAttribute(`class`, `wrapperDiv`)
+
+    //creates div with submitted text
+    const input_text = document.createTextNode(document.getElementById("text-input").value);
     var createDiv = document.createElement("div");
     createDiv.append(input_text)
-    createDiv.setAttribute(`id`, `${add_id}`)
-    LIST.appendChild(createDiv)
-
+    createDiv.setAttribute(`id`, `${amount}`)
+    createWrapperDiv.appendChild(createDiv)
+    
+    //creates DELETE button
     var createButton = document.createElement("button");
-    createButton.setAttribute(`id`, `${add_id}`)
+    createButton.setAttribute(`id`, `${amount}`)
     createButton.setAttribute(`content`, '')
     createButton.textContent = "DELETE"
-    LIST.appendChild(createButton)
+    createWrapperDiv.appendChild(createButton)
+
+    const buttons = document.getElementsByTagName("button");
+    Array.from(buttons).forEach(button =>
+        button.addEventListener("click", deleteTODO));
+}
+
+function deleteTODO(event){
+    var elem = document.getElementById(this.id);
+    if (this.id == "submit-button") return console.log("ignoring submit-button")
+    else return elem.parentNode.removeChild(elem) + console.log(this.id);
 }
