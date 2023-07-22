@@ -15,12 +15,19 @@ submit.addEventListener('click', e => {
     add_id++;
 });
 
+
+//create a div that is inside the div(input_text) and button ? and display: grid on css
+//create an eventlistener, when click on delete button, delete whole div. 
 function createTODO(amount) {
     const input_text = document.createTextNode(document.getElementById("test123").value);
     var createDiv = document.createElement("div");
     createDiv.append(input_text)
     createDiv.setAttribute(`id`, `${add_id}`)
     LIST.appendChild(createDiv)
-}
 
-// Create a button or 
+    var createButton = document.createElement("button");
+    createButton.setAttribute(`id`, `${add_id}`)
+    createButton.setAttribute(`content`, '')
+    createButton.textContent = "DELETE"
+    LIST.appendChild(createButton)
+}
