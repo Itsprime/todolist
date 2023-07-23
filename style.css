@@ -1,7 +1,20 @@
-.todo-list {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
     display: grid;
+    justify-content: center;
+}
+
+.todo-list {
+    display: flex;
 }
 
 .wrapperDiv {
     display: flex;
+    background-color: green;
+    color: blue;
 }
