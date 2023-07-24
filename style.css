@@ -17,4 +17,9 @@ body {
     display: flex;
     background-color: green;
     color: blue;
+    cursor: move;
+}
+
+.dragging {
+    background-color: purple;
 }
