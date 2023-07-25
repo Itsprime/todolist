@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="output.css">
+    <script src="script.js" defer></script>
+    <title>Todo List</title>
+</head>
+
+<body >
+    <!-- <h1 class="bg-green-600">hello Tailwind</h1> -->
+    <div class="container md  bg-green-500">
+        <h2 class="title">TODO LIST</h2>
+        <form class="form" id="formlist">
+            <input type="text" class="input" id="text-input">
+            <button class="submit" id="submit-button" value="Submit">submit</button>
+        </form>
+        <div id="todolist" class="todo-list">
+            <div class="container" id="todo">
+                <h3>To Do</h3>
+                    <div class="wrapperDiv" draggable="true">
+                        <div class="1">Example 1</div>
+                        <button>test</button>
+                    </div>
+            </div>
+
+            <div class="container" id="doing">
+                <h3>DOING</h3>
+
+            </div>
+
+            <div class="container" id="done">
+                <h3>Done! </h3>
+                    <div class="wrapperDiv" draggable="true">
+                        <div class="1">Example 2</div>
+                        <button>test</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
