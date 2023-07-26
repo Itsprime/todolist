@@ -20,8 +20,9 @@ for (i = 0; i < example_todos1.length; i++) {
 function createTODO(amount) {
     var createWrapperDiv = document.createElement("div");
     createWrapperDiv.setAttribute(`id`, `${amount}`)
-    createWrapperDiv.setAttribute(`class`, `wrapperDiv`)
+    createWrapperDiv.setAttribute(`class`, `wrapperDiv bg-red-200 rounded-md flex cursor-move`)
     createWrapperDiv.setAttribute(`draggable`, `true`)
+    //createWrapperDiv.setAttribute(`class`, `bg-slate-500 rounded-md flex`)
     LIST.appendChild(createWrapperDiv)
     // ^Creates the main wrapper div
 
@@ -60,8 +61,10 @@ function registerDraggable(draggable) {
     })
 }
 
-let containers = document.querySelectorAll('.container');
+let containers = document.querySelectorAll('.status-container');
 
+
+//Bug: When no div is inside a container, it returns null
 containers.forEach(container => {
     container.addEventListener('dragover', e => {
         e.preventDefault()
