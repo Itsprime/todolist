@@ -21,7 +21,7 @@ for (i = 0; i < example_todos1.length; i++) {
 function createTODO(amount) {
     var createWrapperDiv = document.createElement("div");
     createWrapperDiv.setAttribute(`id`, `${amount}`)
-    createWrapperDiv.setAttribute(`class`, `wrapperDiv bg-red-200 rounded-md flex cursor-move`)
+    createWrapperDiv.setAttribute(`class`, `wrapperDiv bg-blue-400 rounded-md flex justify-between cursor-move m-1`)
     createWrapperDiv.setAttribute(`draggable`, `true`)
     //createWrapperDiv.setAttribute(`class`, `bg-slate-500 rounded-md flex`)
     LIST.appendChild(createWrapperDiv)
@@ -33,13 +33,15 @@ function createTODO(amount) {
     var createDiv = document.createElement("div");
     createDiv.append(input_text)
     createDiv.setAttribute(`id`, `${amount}`)
+    createDiv.setAttribute(`class`,`mr-4 px-2`)
     createWrapperDiv.appendChild(createDiv)
 
     //creates DELETE button inside wrappedDiv
     var createButton = document.createElement("button");
     createButton.setAttribute(`id`, `${amount}`)
     createButton.setAttribute(`content`, '')
-    createButton.textContent = "DELETE"
+    createButton.setAttribute(`class`,`rounded bg-red-500 p-1 my-1 mr-1 fa-solid fa-trash max-h-6`)
+    // createButton.textContent = "DELETE"
     createWrapperDiv.appendChild(createButton)
 
     //gets all buttons in page
@@ -60,11 +62,11 @@ function registerDraggable(draggable) {
         draggable.classList.remove('dragging')
         console.log("dragging stop ")
     })
-
-
 }
 
 let containers = document.querySelectorAll('.status-container');
+
+//if wrapper inside container with id="done", change wrapper text to line-through
 
 
 //Bug: When no div is inside a container, it returns null
@@ -79,6 +81,7 @@ containers.forEach(container => {
             container.appendChild(draggable)
         } else {
             container.insertBefore(draggable, afterElement)
+            
         }
     })
 })
