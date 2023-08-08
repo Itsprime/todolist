@@ -1,12 +1,16 @@
 const LIST = document.getElementById("todo");
 const submit = document.getElementById('submit-button');
-document.addEventListener("DOMContentLoaded", getLocalTodos);
+// document.addEventListener("DOMContentLoaded", getLocalTodos);
 let add_id = 0;
 
 //executes the function createTODO
 submit.addEventListener('click', e => {
     e.preventDefault()
-    createTODO(add_id)
+    const input_text_valid = document.createTextNode(document.getElementById("text-input").value);
+    console.log(input_text_valid)
+    if(input_text_valid.textContent == "") { alert("No text - Please add text");}
+    else {createTODO(add_id)}
+    // createTODO(add_id)
     add_id++;
 });
 
@@ -29,7 +33,7 @@ function createTODO(amount) {
 
     //gets text from the box input and adds it a newly created div instide the wrappedDiv
     const input_text = document.createTextNode(document.getElementById("text-input").value);
-    if (input_text.textContent == "") return alert("No text - Please add text");
+    // if (input_text.textContent == "") return alert("No text - Please add text");
     var createDiv = document.createElement("div");
     createDiv.append(input_text)
     createDiv.setAttribute(`id`, `${amount}`)
@@ -106,35 +110,35 @@ function deleteTODO(event) {
     else return elem.parentNode.removeChild(elem) + console.log(this.id);
 }
 
-function getLocalTodos() {
-    let todos;
-    if (localStorage.getItem("todos") === null) {
-        todos = [];
-    } else {
-        todos = JSON.parse(localStorage.getItem("todos"));
-    }
-    todos.forEach(function (todo) {
-        var createWrapperDiv = document.createElement("div");
-        createWrapperDiv.setAttribute(`id`, `${amount}`)
-        createWrapperDiv.setAttribute(`class`, `wrapperDiv bg-red-200 rounded-md flex cursor-move`)
-        createWrapperDiv.setAttribute(`draggable`, `true`)
-        //createWrapperDiv.setAttribute(`class`, `bg-slate-500 rounded-md flex`)
-        LIST.appendChild(createWrapperDiv)
-        // ^Creates the main wrapper div
+// function getLocalTodos() {
+//     let todos;
+//     if (localStorage.getItem("todos") === null) {
+//         todos = [];
+//     } else {
+//         todos = JSON.parse(localStorage.getItem("todos"));
+//     }
+//     todos.forEach(function (todo) {
+//         var createWrapperDiv = document.createElement("div");
+//         createWrapperDiv.setAttribute(`id`, `${amount}`)
+//         createWrapperDiv.setAttribute(`class`, `wrapperDiv bg-red-200 rounded-md flex cursor-move`)
+//         createWrapperDiv.setAttribute(`draggable`, `true`)
+//         //createWrapperDiv.setAttribute(`class`, `bg-slate-500 rounded-md flex`)
+//         LIST.appendChild(createWrapperDiv)
+//         // ^Creates the main wrapper div
 
-        //gets text from the box input and adds it a newly created div instide the wrappedDiv
-        const input_text = document.createTextNode(document.getElementById("text-input").value);
-        if (input_text.textContent == "") return alert("No text - Please add text");
-        var createDiv = document.createElement("div");
-        createDiv.append(input_text)
-        createDiv.setAttribute(`id`, `${amount}`)
-        createWrapperDiv.appendChild(createDiv)
+//         //gets text from the box input and adds it a newly created div instide the wrappedDiv
+//         const input_text = document.createTextNode(document.getElementById("text-input").value);
+//         if (input_text.textContent == "") return alert("No text - Please add text");
+//         var createDiv = document.createElement("div");
+//         createDiv.append(input_text)
+//         createDiv.setAttribute(`id`, `${amount}`)
+//         createWrapperDiv.appendChild(createDiv)
 
-        //creates DELETE button inside wrappedDiv
-        var createButton = document.createElement("button");
-        createButton.setAttribute(`id`, `${amount}`)
-        createButton.setAttribute(`content`, '')
-        createButton.textContent = "DELETE"
-        createWrapperDiv.appendChild(createButton)
-    });
-}
+//         //creates DELETE button inside wrappedDiv
+//         var createButton = document.createElement("button");
+//         createButton.setAttribute(`id`, `${amount}`)
+//         createButton.setAttribute(`content`, '')
+//         createButton.textContent = "DELETE"
+//         createWrapperDiv.appendChild(createButton)
+//     });
+// }
